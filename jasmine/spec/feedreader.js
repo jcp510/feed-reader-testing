@@ -79,13 +79,10 @@ $(function() {
 
         // Ensures the following spec does not start until async work is complete.
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         it('has at least one entry', function(done) {
-            loadFeed(0);
             expect($('.feed')).toBeDefined();
             done();
         });
@@ -101,9 +98,7 @@ $(function() {
 
         // Ensures the following spec does not start until async work is complete.
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         it('changes content in .feed container', function(done) {
@@ -118,12 +113,11 @@ $(function() {
             loadFeed(1, function() {
                 testFeed2 = $('.feed').html();
                 console.log("And this is testFeed2" + " " + testFeed2);
+                /* Compare testFeed2 to testFeed1 to ensure the content in the .feed
+                container actually changes when a new feed is loaded. */
+                expect(testFeed2).not.toBe(testFeed1);
+                done();
             });
-
-            /* Compare testFeed2 to testFeed1 to ensure the content in the .feed
-            container actually changes when a new feed is loaded. */
-            expect(testFeed2).not.toBe(testFeed1);
-            done();
         });
     });
 }());
