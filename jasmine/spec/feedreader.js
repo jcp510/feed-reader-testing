@@ -26,7 +26,6 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* This test should loop through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
@@ -34,6 +33,7 @@ $(function() {
         it('have urls', function() {
             for (var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url.length).toBeGreaterThan(0);
             }
         });
 
@@ -44,6 +44,7 @@ $(function() {
         it('have names', function() {
             for (var i = 0; i < allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
+                expect(allFeeds[i].name.length).toBeGreaterThan(0);
             }
         });
     });
